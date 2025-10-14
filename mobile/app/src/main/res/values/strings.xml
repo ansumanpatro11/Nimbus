@@ -1,1 +1,3 @@
-<resources><string name="app_name">SIH Wearable</string></resources>
+<resources>
+    <string name="app_name">NimbusApp</string>
+</resources>
