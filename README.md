@@ -1,30 +1,46 @@
-# SIH Wearable Prototype Stack
 
-Contains:
-- backend/  (FastAPI + SQLAlchemy, async, WebSocket)
-- dashboard/ (Streamlit)
-- mobile/   (Android Kotlin prototype)
+- **Wearables:** ESP32 devices with HR, SpO₂, IMU, and temperature sensors.  
+- **Android App:** Collects BLE data, stores offline, syncs with backend.  
+- **Backend:** FastAPI + SQLAlchemy with REST + WebSocket APIs.  
+- **Dashboard:** Streamlit app for multi-user live monitoring and history.  
 
-## Run Backend
-```
-cd backend
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-uvicorn app.api.main:app --reload --host 0.0.0.0 --port 8000
-```
+---
 
-## Run Dashboard
-```
-cd dashboard
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-export API_URL=http://localhost:8000
-streamlit run app.py
-```
+## 🛠 Tech Stack
 
-## Android
-- Open `mobile/` in Android Studio
-- Devices must advertise names `ND-WRIST` and `ND-CHEST`
-- Replace UUIDs in `BleForegroundService.kt` to match your firmware
-- Ingest API key: `dev-secret-key` (change in backend .env)
+### **Hardware**
+- ESP32 (BLE microcontroller)  
+- MAX30102 (Heart Rate & SpO₂ sensor)  
+- IMU (MPU6050/ICM-20948 for motion & fall detection)  
+- DS18B20/MLX90614 (Temperature sensor)  
+- OLED Display (SSD1306), buzzer, vibration motor, SOS button  
+- Li-ion battery + TP4056 charging module  
+
+### **Mobile (Android)**
+- Kotlin + Android Studio  
+- BLE GATT APIs (dual device connections)  
+- Room DB (offline logging)  
+- WorkManager (background sync)  
+- OkHttp (REST networking)  
+
+### **Backend**
+- FastAPI + Uvicorn (ASGI server)  
+- SQLAlchemy ORM + SQLite (default) / PostgreSQL (production)  
+- Pydantic (data validation)  
+- WebSockets (live updates)  
+- Docker-ready for deployment  
+
+### **Dashboard**
+- Streamlit (web UI)  
+- Pandas + Requests (data + API calls)  
+- Simple fleet view + user history visualization  
+
+### **AI/ML (Future)**
+- PyTorch models for fatigue & fall detection  
+- Export via ONNX for server/edge inference  
+- Edge-ready: TensorFlow Lite / ESP-DL for on-device ML  
+
+---
+
+## 📂 Project Structure
+
