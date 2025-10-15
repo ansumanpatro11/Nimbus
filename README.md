@@ -35,12 +35,7 @@
 - Pandas + Requests (data + API calls)  
 - Simple fleet view + user history visualization  
 
-### **AI/ML (Future)**
-- PyTorch models for fatigue & fall detection  
-- Export via ONNX for server/edge inference  
-- Edge-ready: TensorFlow Lite / ESP-DL for on-device ML  
 
----
 
-## 📂 Project Structure
+
 
